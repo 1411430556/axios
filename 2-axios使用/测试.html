@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>测试</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --clr: #112434;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+      color: #fff;
+      background: var(--clr);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      display: flex;
+      font-size: 40px;
+      line-height: 40px;
+    }
+
+    .animate-wrapper {
+      position: relative;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .text {
+      list-style: none;
+      position: relative;
+      animation: moveUp 9s steps(3) infinite;
+    }
+
+    @keyframes moveUp {
+      from {
+        top: 0px;
+      }
+      100% {
+        top: -120px;
+      }
+    }
+
+    .shade {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      background: var(--clr);
+      animation: typing 3s steps(9) infinite;
+    }
+
+    .shade::before {
+      content: '';
+      width: 4px;
+      height: 100%;
+      background: red;
+      position: absolute;
+      left: 0;
+      animation: cursorAnimate .4s infinite;
+    }
+
+    @keyframes cursorAnimate {
+      0%, 75% {
+        opacity: 1;
+      }
+      76%, 100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes typing {
+      from {
+        left: 0px;
+      }
+      30%, 70% {
+        left: calc(100% - 4px);
+      }
+      100% {
+        left: 0px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>嗨，我是</div>
+    <div class="animate-wrapper">
+      <ul class="text">
+        <li>白泽小唐，请多关照</li>
+        <li>一名前端开发工程师</li>
+        <li>一名硬件制作爱好者</li>
+      </ul>
+      <div class="shade"></div>
+    </div>
+  </div>
+  <script>
+
+  </script>
+</body>
+</html>

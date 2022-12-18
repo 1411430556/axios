@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+  <title>axios默认配置</title>
+  <style>
+    .box {
+      /*display: flex;*/
+      /*justify-content: center;*/
+      /*align-items: center;*/
+      /*height: 100vh;*/
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    button {
+      /* Variables */
+      --button_radius: 0.75em;
+      --button_color: #e8e8e8;
+      --button_outline_color: #000000;
+      font-size: 17px;
+      font-weight: bold;
+      border: none;
+      border-radius: var(--button_radius);
+      background: var(--button_outline_color);
+    }
+
+    .button_top {
+      display: block;
+      box-sizing: border-box;
+      border: 2px solid var(--button_outline_color);
+      border-radius: var(--button_radius);
+      padding: 0.75em 1.5em;
+      background: var(--button_color);
+      color: var(--button_outline_color);
+      transform: translateY(-0.2em);
+      transition: transform 0.1s ease;
+    }
+
+    button:hover .button_top {
+      /* Pull the button upwards when hovered */
+      transform: translateY(-0.33em);
+    }
+
+    button:active .button_top {
+      /* Push the button downwards when pressed */
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <button>
+      <span class="button_top">发送GET请求</span>
+    </button>
+    <button>
+      <span class="button_top">发送POST请求</span>
+    </button>
+    <button>
+      <span class="button_top">发送PUT请求</span>
+    </button>
+    <button>
+      <span class="button_top">发送DELETE请求</span>
+    </button>
+  </div>
+  <script>
+    // 获取按钮
+    const btns = document.querySelectorAll('button')
+    // 设置默认配置
+    axios.defaults.method = 'GET' // 设置默认的请求类型为 GET
+    axios.defaults.baseURL = 'http://localhost:3000' // 设置基础 URL
+    axios.defaults.params = { id: 100 }
+    axios.defaults.timeout = 3000
+
+    btns[0].onclick = function () {
+      axios({
+        // method: 'GET'    上面设置了默认请求方法，这里可以不写了
+        url: '/posts',
+      }).then(response => {
+        console.log(response)
+      })
+    }
+  </script>
+</body>
+</html>
